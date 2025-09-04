@@ -6,7 +6,7 @@ import chevronDown from "@/assets/images/chevron-down.svg";
 
 const Header = () => {
   return (
-    <header className="bg-primaryColor h-12 flex items-center">
+    <header className="bg-primaryColor h-12 flex items-center fixed w-full z-50">
       <div className="container flex justify-between">
         <img src={logo} alt="LOGO" height={40} width={163} />
         <div className="flex items-center">

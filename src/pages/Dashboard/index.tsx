@@ -1,3 +1,4 @@
+import { Link } from "react-router";
 import CalendaIcon from "../../assets/images/calendar-icon.svg?react";
 
 const rows = [
@@ -180,13 +181,13 @@ const Dashboard = () => {
                 placeholder="Ad, soyad ve ya fin ile axtar..."
                 className="border rounded-md p-2 "
               />
-              <button className="bg-[#346cdc] text-white rounded-lg px-[14px] py-[8px]">
+              <Link to="/search-teacher" className="bg-[#346cdc] text-white rounded-lg px-[14px] py-[8px]">
                 Muellim elave et
-              </button>
+              </Link>
             </div>
           </div>
 
-          <div className=" overflow-x-auto invisible-scrollbar w-[1100px]">
+          <div className="overflow-x-auto invisible-scrollbar w-[1100px]">
             <table className="border min-w-[1440px] text-sm">
               <thead>
                 <tr className="border">
