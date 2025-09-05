@@ -1,0 +1,40 @@
+{
+  "teachers": [
+    {
+      "id": 1,
+      "firstName": "Nihat",
+      "lastName":"Aliyev",
+      "fatherName":"Nazim",
+      "gender": "male",
+      "birthdate": "1995-05-12",
+      "seriaNo":"dkgjslfg",
+      "finCode":"ssssssss",
+      "citizenship":"Azerbaycan",
+      "family":"subay",
+      "social":"Her iki valideyn itirmis",
+      "socialStatus":"Mevburi kockun",
+      "userName":"nihat.aliyev",
+      "militaryStatus":true,
+      "diabilityStatus":true,
+      "address":"Xirdalan, kristal absheron 1",
+      "registerAddress":"Masalli, tebriz kucesi ev 5",
+      "tel":"0503848283",
+      "internalTel":"0503848283",
+      "email":"nihataliy3v@gmail.com",
+      "startTime":"12-03-2024",
+      "department": "Riyaziyyat və İnformatika",
+      "academicDegree": "phd",
+      "academicName": "dosent",
+      "maxSaat": 750,
+      "stateUnit": "tam",
+      "languages": ["az", "en"],
+      "languageSkills": ["ru"],
+      "subjects": [1, 2]
+    }
+  ],
+  "subjects": [
+    { "id": 1, "label": "Riyaziyyat", "value": "riyaziyyat" },
+    { "id": 2, "label": "Fizika", "value": "fizika" },
+    { "id": 3, "label": "İnformatika", "value": "informatika" }
+  ]
+}
