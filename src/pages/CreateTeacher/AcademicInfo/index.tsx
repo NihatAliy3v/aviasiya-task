@@ -1,10 +1,10 @@
-// src/pages/CreateTeacher.tsx
 import { Button } from "@/components/ui/button";
 import { useForm } from "react-hook-form";
 import ArrowIcon from "@/assets/images/arrow-icon.svg?react";
 import GraduateIcon from "@/assets/images/graduate-icon.svg?react";
 import LangIcon from "@/assets/images/lang-icon.svg?react";
 import { useNavigate } from "react-router";
+
 type FormValues = {
   kafedra: string;
   elmiDerece: string;
@@ -30,6 +30,10 @@ const AcademicInfo = () => {
 
   const onSubmit = (data: FormValues) => {
     console.log(data);
+    navigate({
+      pathname: "/create-teacher",
+      search: "?step=subject",
+    });
   };
 
   const handlePrev = () => {
@@ -38,25 +42,16 @@ const AcademicInfo = () => {
       search: "",
     });
   };
-  const handleNext = () => {
-    navigate({
-      pathname: "/create-teacher",
-      search: "?step=subject",
-    });
-  };
 
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className=" mx-auto p-6 space-y-6 text-[#414651]"
+      className="mx-auto p-6 space-y-6 text-[#414651]"
     >
       {/* Akademik məlumatlar */}
-      <div className="space-y-4 ">
+      <div className="space-y-4">
         <h2 className="font-medium text-black flex items-center gap-2">
-          <span>
-            <GraduateIcon />
-          </span>{" "}
-          Akademik məlumatlar
+          <GraduateIcon /> Akademik məlumatlar
         </h2>
 
         <div className="space-y-2">
@@ -127,11 +122,8 @@ const AcademicInfo = () => {
 
       {/* Dil bilikləri */}
       <div className="space-y-4">
-        <h2 className="font-medium flex items-center gap-2 text-black ">
-          <span>
-            <LangIcon />
-          </span>{" "}
-          Dil bilikləri
+        <h2 className="font-medium flex items-center gap-2 text-black">
+          <LangIcon /> Dil bilikləri
         </h2>
 
         <div className="space-y-2">
@@ -185,7 +177,6 @@ const AcademicInfo = () => {
           variant="outline"
           type="submit"
           className="px-4 py-2 text-[#414651] rounded-md hover:bg-gray-100"
-          onClick={handleNext}
         >
           İrəli <ArrowIcon />
         </Button>

@@ -63,6 +63,9 @@ const SubjectInfoForm = () => {
       search: "?step=academic",
     });
   };
+  const handleNext = () => {
+    navigate("/");
+  };
 
   return (
     <section className="p-6 rounded-lg flex flex-col h-full justify-between">
@@ -151,6 +154,14 @@ const SubjectInfoForm = () => {
             <ArrowIcon />
           </div>
           Geri
+        </Button>
+        <Button
+          variant="outline"
+          type="submit"
+          className="px-4 py-2 text-[#414651] rounded-md hover:bg-gray-100"
+          onClick={handleNext}
+        >
+          İrəli <ArrowIcon />
         </Button>
       </div>
     </section>
