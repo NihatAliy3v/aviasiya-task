@@ -8,33 +8,62 @@ import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router";
 import ArrowIcon from "@/assets/images/arrow-icon.svg?react";
 import XIcon from "@/assets/images/x-icon.svg?react";
-
-const options = [
-  { value: "sdgs", label: "dsgsdg" },
-  { value: "saaa", label: "ffff" },
-  { value: "aaaa", label: "aaaaaa" },
-  { value: "bbbb", label: "bbbbbb" },
-];
+import { useSubjects } from "@/hooks/api/subject";
+import { useAddTeacher, useTeachers } from "@/hooks/api/teacher";
+import Swal from "sweetalert2";
+const LOCAL_KEY = "subjectInfo";
 
 const SubjectInfoForm = () => {
   const [selectedItems, setSelectedItems] = useState<string[]>([]);
   const [search, setSearch] = useState("");
   const [open, setOpen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
+  const { data: subjectData } = useSubjects();
 
-  const toggleItem = (value: string) => {
+  const teacher = useAddTeacher();
+
+  const successAlert = () => {
+    const Toast = Swal.mixin({
+      toast: true,
+      position: "top-end",
+      showConfirmButton: false,
+      // timer: 3000,
+      timerProgressBar: true,
+      showCloseButton: true,
+
+      didOpen: (toast) => {
+        toast.onmouseenter = Swal.stopTimer;
+        toast.onmouseleave = Swal.resumeTimer;
+      },
+    });
+    Toast.fire({
+      icon: "info",
+      title: "Müəllim uğurla əlavə edildi",
+    });
+  };
+
+  useEffect(() => {
+    const saved = localStorage.getItem(LOCAL_KEY);
+    if (saved) {
+      setSelectedItems(JSON.parse(saved));
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem(LOCAL_KEY, JSON.stringify(selectedItems));
+  }, [selectedItems]);
+
+  const toggleItem = (id: string) => {
     setSelectedItems((prev) =>
-      prev.includes(value)
-        ? prev.filter((item) => item !== value)
-        : [...prev, value]
+      prev.includes(id) ? prev.filter((item) => item !== id) : [...prev, id]
     );
   };
 
-  const removeItem = (value: string) => {
-    setSelectedItems((prev) => prev.filter((item) => item !== value));
+  const removeItem = (id: string) => {
+    setSelectedItems((prev) => prev.filter((item) => item !== id));
   };
 
-  const filteredOptions = options.filter((item) =>
+  const filteredOptions = subjectData?.filter((item) =>
     item.label.toLowerCase().includes(search.toLowerCase())
   );
 
@@ -53,9 +82,21 @@ const SubjectInfoForm = () => {
     };
   }, []);
 
-  console.log(selectedItems);
-
   const navigate = useNavigate();
+
+  const personalInfo = JSON.parse(
+    localStorage.getItem("personalInfo") as string
+  );
+  const academicInfo = JSON.parse(
+    localStorage.getItem("academicInfo") as string
+  );
+  const subjectInfo = JSON.parse(localStorage.getItem("subjectInfo") as string);
+
+  const teacherPayload = {
+    ...personalInfo,
+    ...academicInfo,
+    subjects: subjectInfo,
+  };
 
   const handlePrev = () => {
     navigate({
@@ -63,8 +104,19 @@ const SubjectInfoForm = () => {
       search: "?step=academic",
     });
   };
+
+
   const handleNext = () => {
-    navigate("/");
+    try {
+      teacher.mutate(teacherPayload);
+      navigate("/");
+      localStorage.removeItem("personalInfo");
+      localStorage.removeItem("academicInfo");
+      localStorage.removeItem("subjectInfo");
+      successAlert();
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (
@@ -103,16 +155,16 @@ const SubjectInfoForm = () => {
                 </p>
               )}
               {filteredOptions.map((item) => {
-                const checked = selectedItems.includes(item.value);
+                const checked = selectedItems.includes(item.id);
                 return (
                   <div
-                    key={item.value}
-                    onClick={() => toggleItem(item.value)}
+                    key={item.id}
+                    onClick={() => toggleItem(item.id)}
                     className="flex items-center space-x-2 cursor-pointer hover:bg-gray-100 rounded p-1"
                   >
                     <Checkbox
                       checked={checked}
-                      onCheckedChange={() => toggleItem(item.value)}
+                      onCheckedChange={() => toggleItem(item.id)}
                       className="data-[state=checked]:border-blue-600 data-[state=checked]:bg-blue-600"
                     />
                     <Label>{item.label}</Label>
@@ -125,16 +177,15 @@ const SubjectInfoForm = () => {
 
         {selectedItems.length > 0 && (
           <ol className="mt-4 list-decimal list-inside space-y-1">
-            {selectedItems.map((value, index) => {
-              const item = options.find((opt) => opt.value === value);
+            {selectedItems.map((id, index) => {
+              const item = subjectData?.find((opt) => opt.id === id);
               if (!item) return null;
               return (
-                <li
-                  key={item.value}
-                  className="flex justify-between items-center"
-                >
-                  <span>{item.label}</span>
-                  <button onClick={() => removeItem(item.value)}>
+                <li key={item.id} className="flex justify-between items-center">
+                  <span>
+                    {index + 1}. {item.label}
+                  </span>
+                  <button onClick={() => removeItem(item.id)}>
                     <XIcon />
                   </button>
                 </li>

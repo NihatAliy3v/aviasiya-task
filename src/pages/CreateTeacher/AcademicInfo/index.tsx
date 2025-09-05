@@ -4,32 +4,46 @@ import ArrowIcon from "@/assets/images/arrow-icon.svg?react";
 import GraduateIcon from "@/assets/images/graduate-icon.svg?react";
 import LangIcon from "@/assets/images/lang-icon.svg?react";
 import { useNavigate } from "react-router";
+import { useEffect } from "react";
 
 type FormValues = {
-  kafedra: string;
-  elmiDerece: string;
-  elmiAd: string;
-  maxSaat: number;
-  statVahidi: string;
-  tedrisDilleri: string;
-  xariciDil: string;
+  department: string;
+  academicDegree: string;
+  academicName: string;
+  totalHour: number;
+  stateUnit: string;
+  languages: string;
+  languageSkills: string;
 };
 
+const STORAGE_KEY = "academicInfo";
+
 const AcademicInfo = () => {
+  // LocalStorage-də saxlanan məlumatı oxu
+  const savedData = localStorage.getItem(STORAGE_KEY);
+  const defaultValues: Partial<FormValues> = savedData
+    ? JSON.parse(savedData)
+    : { totalHour: 750 }; // Əgər heç nə yoxdursa maxSaat default 750 olsun
+
   const {
     register,
     handleSubmit,
     formState: { errors },
+    watch,
   } = useForm<FormValues>({
-    defaultValues: {
-      maxSaat: 750,
-    },
+    defaultValues,
   });
 
   const navigate = useNavigate();
 
+  // Form dəyişdikcə localStorage-də saxla
+  const formValues = watch();
+  useEffect(() => {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(formValues));
+  }, [formValues]);
+
   const onSubmit = (data: FormValues) => {
-    console.log(data);
+    console.log("Academic Info:", data);
     navigate({
       pathname: "/create-teacher",
       search: "?step=subject",
@@ -60,7 +74,7 @@ const AcademicInfo = () => {
           </label>
           <input
             type="text"
-            {...register("kafedra")}
+            {...register("department")}
             placeholder="Kafedra adı"
             className="w-full border rounded-md px-3 py-2"
           />
@@ -69,7 +83,7 @@ const AcademicInfo = () => {
         <div className="space-y-2">
           <label className="text-sm font-medium">Elmi dərəcə</label>
           <select
-            {...register("elmiDerece")}
+            {...register("academicDegree")}
             className="w-full border rounded-md px-3 py-2"
           >
             <option value="">Elmi dərəcə</option>
@@ -81,7 +95,7 @@ const AcademicInfo = () => {
         <div className="space-y-2">
           <label className="text-sm font-medium">Elmi ad</label>
           <select
-            {...register("elmiAd")}
+            {...register("academicName")}
             className="w-full border rounded-md px-3 py-2"
           >
             <option value="">Elmi ad</option>
@@ -95,10 +109,10 @@ const AcademicInfo = () => {
             <label className="text-sm font-medium">Maksimal saat *</label>
             <input
               type="number"
-              {...register("maxSaat", { required: true })}
+              {...register("totalHour", { required: true })}
               className="w-full border rounded-md px-3 py-2"
             />
-            {errors.maxSaat && (
+            {errors.totalHour && (
               <p className="text-red-500 text-sm">Maksimal saat tələb olunur</p>
             )}
           </div>
@@ -106,14 +120,14 @@ const AcademicInfo = () => {
           <div className="space-y-2">
             <label className="text-sm font-medium">Ştat vahidi *</label>
             <select
-              {...register("statVahidi", { required: true })}
+              {...register("stateUnit", { required: true })}
               className="w-full border rounded-md px-3 py-2"
             >
               <option value="">Seçin</option>
               <option value="tam">Tam</option>
               <option value="yarim">Yarım</option>
             </select>
-            {errors.statVahidi && (
+            {errors.stateUnit && (
               <p className="text-red-500 text-sm">Ştat vahidi tələb olunur</p>
             )}
           </div>
@@ -131,7 +145,7 @@ const AcademicInfo = () => {
             Tədris apardığı dillər *
           </label>
           <select
-            {...register("tedrisDilleri", { required: true })}
+            {...register("languages", { required: true })}
             className="w-full border rounded-md px-3 py-2"
           >
             <option value="">Seçin</option>
@@ -139,7 +153,7 @@ const AcademicInfo = () => {
             <option value="en">İngilis dili</option>
             <option value="ru">Rus dili</option>
           </select>
-          {errors.tedrisDilleri && (
+          {errors.languages && (
             <p className="text-red-500 text-sm">
               Tədris apardığı dillər tələb olunur
             </p>
@@ -149,7 +163,7 @@ const AcademicInfo = () => {
         <div className="space-y-2">
           <label className="text-sm font-medium">Xarici dil bilikləri</label>
           <select
-            {...register("xariciDil")}
+            {...register("languageSkills")}
             className="w-full border rounded-md px-3 py-2"
           >
             <option value="">Seçin</option>

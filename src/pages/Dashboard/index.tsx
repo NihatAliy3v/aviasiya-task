@@ -1,6 +1,15 @@
 import { Link } from "react-router";
 import CalendaIcon from "../../assets/images/calendar-icon.svg?react";
-
+import { useTeachers } from "@/hooks/api/teacher";
+import DropdownIcon from "@/assets/images/dropdown-icon.svg?react";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+import BlackDocIcon from "@/assets/images/black-doc-icon.svg?react";
+import EditIcon from "@/assets/images/edit-icon.svg?react";
+import TrashIcon from "@/assets/images/trash-icon.svg?react";
 const rows = [
   {
     fieldName: "No",
@@ -44,108 +53,10 @@ const rows = [
   },
 ];
 
-const rowData = [
-  {
-    id: 1,
-    firstName: "Aygun",
-    lastName: "Aliyeva",
-    fatherName: "Kamil",
-    gender: "Qadin",
-    fin: "4de5gye",
-    birthDate: "23/11/1982",
-    state: "0.5 stat",
-    totalHour: 200,
-    language: ["aze", "ru"],
-    department: "Riyaziyyat",
-    status: true,
-  },
-  {
-    id: 2,
-    firstName: "Aygun",
-    lastName: "Aliyeva",
-    fatherName: "Kamil",
-    gender: "Qadin",
-    fin: "4de5gye",
-    birthDate: "23/11/1982",
-    state: "0.5 stat",
-    totalHour: 200,
-    language: ["aze", "ru"],
-    department: "Riyaziyyat",
-    status: true,
-  },
-  {
-    id: 3,
-    firstName: "Aygun",
-    lastName: "Aliyeva",
-    fatherName: "Kamil",
-    gender: "Qadin",
-    fin: "4de5gye",
-    birthDate: "23/11/1982",
-    state: "0.5 stat",
-    totalHour: 200,
-    language: ["aze", "ru"],
-    department: "Riyaziyyat",
-    status: true,
-  },
-  {
-    id: 4,
-    firstName: "Aygun",
-    lastName: "Aliyeva",
-    fatherName: "Kamil",
-    gender: "Qadin",
-    fin: "4de5gye",
-    birthDate: "23/11/1982",
-    state: "0.5 stat",
-    totalHour: 200,
-    language: ["aze", "ru"],
-    department: "Riyaziyyat",
-    status: true,
-  },
-  {
-    id: 5,
-    firstName: "Aygun",
-    lastName: "Aliyeva",
-    fatherName: "Kamil",
-    gender: "Qadin",
-    fin: "4de5gye",
-    birthDate: "23/11/1982",
-    state: "0.5 stat",
-    totalHour: 200,
-    language: ["aze", "ru"],
-    department: "Riyaziyyat",
-    status: true,
-  },
-  {
-    id: 6,
-    firstName: "Aygun",
-    lastName: "Aliyeva",
-    fatherName: "Kamil",
-    gender: "Qadin",
-    fin: "4de5gye",
-    birthDate: "23/11/1982",
-    state: "0.5 stat",
-    totalHour: 200,
-    language: ["aze", "ru"],
-    department: "Riyaziyyat",
-    status: true,
-  },
-  {
-    id: 7,
-    firstName: "Aygun",
-    lastName: "Aliyeva",
-    fatherName: "Kamil",
-    gender: "Qadin",
-    fin: "4de5gye",
-    birthDate: "23/11/1982",
-    state: "0.5 stat",
-    totalHour: 200,
-    language: ["aze", "ru"],
-    department: "Riyaziyyat",
-    status: true,
-  },
-];
-
 const Dashboard = () => {
+  const { data: teacherData } = useTeachers();
+
+  console.log(teacherData);
   return (
     <main>
       <section className="py-4">
@@ -181,7 +92,10 @@ const Dashboard = () => {
                 placeholder="Ad, soyad ve ya fin ile axtar..."
                 className="border rounded-md p-2 "
               />
-              <Link to="/search-teacher" className="bg-[#346cdc] text-white rounded-lg px-[14px] py-[8px]">
+              <Link
+                to="/search-teacher"
+                className="bg-[#346cdc] text-white rounded-lg px-[14px] py-[8px]"
+              >
                 Muellim elave et
               </Link>
             </div>
@@ -191,7 +105,7 @@ const Dashboard = () => {
             <table className="border min-w-[1440px] text-sm">
               <thead>
                 <tr className="border">
-                  {rows.map((item, index) => (
+                  {rows?.map((item, index) => (
                     <th
                       className={`border py-4 pl-5 text-left text-[#717680] `}
                       key={index}
@@ -203,7 +117,7 @@ const Dashboard = () => {
                 </tr>
               </thead>
               <tbody className="font-medium">
-                {rowData.map((item, index) => {
+                {teacherData?.map((item, index) => {
                   return (
                     <tr>
                       <td className=" py-4 pl-5">{item.id}</td>
@@ -211,18 +125,40 @@ const Dashboard = () => {
                         {item.firstName} {item.lastName} {item.fatherName}
                       </td>
                       <td className=" py-4 pl-5">{item.gender}</td>
-                      <td className=" py-4 pl-5">{item.fin}</td>
-                      <td className=" py-4 pl-5">{item.birthDate}</td>
-                      <td className=" py-4 pl-5">{item.state}</td>
+                      <td className=" py-4 pl-5">{item.finCode}</td>
+                      <td className=" py-4 pl-5">{item.birthdate}</td>
+                      <td className=" py-4 pl-5">{item.stateUnit}</td>
                       <td className=" py-4 pl-5">{item.totalHour}</td>
                       <td className=" py-4 pl-5">
-                        {item.language.map((item) => {
+                        {/* {item?.language.map((item) => {
                           return <span>{item}</span>;
-                        })}
+                        })} */}
                       </td>
                       <td className=" py-4 pl-5">{item.department}</td>
                       <td className=" py-4 pl-5">
                         {item.status ? "Emr var" : "emr yoxdur"}
+                      </td>
+                      <td>
+                        <Popover>
+                          <PopoverTrigger className="px-5">
+                            <DropdownIcon />
+                          </PopoverTrigger>
+
+                          <PopoverContent className="absolute right-0 flex flex-col gap-3">
+                            <button className="flex items-center gap-2">
+                              <BlackDocIcon />
+                              Detallar
+                            </button>
+                            <button className="flex items-center gap-2">
+                              <EditIcon />
+                              Düzəliş et
+                            </button>
+                            <button className="flex items-center gap-2 text-red-600">
+                              <TrashIcon />
+                              Sil
+                            </button>
+                          </PopoverContent>
+                        </Popover>
                       </td>
                     </tr>
                   );
