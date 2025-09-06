@@ -14,8 +14,7 @@ import {
 } from "@/components/ui/collapsible";
 import { ChevronDown } from "lucide-react";
 import { routes } from "./routes";
-import { Link } from "react-router"; // react-router link
-// import userIcon from "@/assets/images/icons/user-icon.svg";
+import { Link } from "react-router";
 const SidebarMain = () => {
   return (
     <Sidebar className="pt-[100px]">

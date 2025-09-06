@@ -14,28 +14,28 @@ export const routes = [
     children: [
       {
         name: "lorem ipsum dolar",
-        path: "lorem",
+        path: "/",
       },
       {
         name: "lorem ipsum dolar",
-        path: "lorem",
+        path: "/",
       },
       {
         name: "lorem ipsum dolar",
-        path: "lorem",
+        path: "/",
       },
     ],
   },
   {
     name: "Soraqçalar",
     icon: fileIcon,
-    path: "lorem2",
+    path: "/",
     children: null,
   },
   {
     name: "Sorğular",
     icon: folderIcon,
-    path: "lorem2",
+    path: "/",
     children: null,
   },
   {
@@ -44,12 +44,12 @@ export const routes = [
     path: null,
     children: [
       {
-        name: "sjsdg",
-        path: "agjsdg",
+        name: "lorem ipsum dolar",
+        path: "/",
       },
       {
-        name: "sjsdg",
-        path: "agjsdg",
+        name: "lorem ipsum dolar",
+        path: "/",
       },
     ],
   },
@@ -59,12 +59,12 @@ export const routes = [
     path: null,
     children: [
       {
-        name: "sjsdg",
-        path: "agjsdg",
+        name: "lorem ipsum dolar",
+        path: "/",
       },
       {
-        name: "sjsdg",
-        path: "agjsdg",
+        name: "lorem ipsum dolar",
+        path: "/",
       },
     ],
   },
@@ -76,19 +76,19 @@ export const routes = [
     children: [
       {
         name: "Qrup plani",
-        path: "agjsdg",
+        path: "/",
       },
       {
         name: "Tədris tapşırıqları",
-        path: "agjsdg",
+        path: "/",
       },
       {
         name: "Mühazirə birləşməsi",
-        path: "agjsdg",
+        path: "/",
       },
       {
         name: "Tədris yükü",
-        path: "agjsdg",
+        path: "/",
       },
       {
         name: "Professor - müəllim heyəti",
@@ -102,12 +102,12 @@ export const routes = [
     path: null,
     children: [
       {
-        name: "sjsdg",
-        path: "agjsdg",
+        name: "lorem ipsum dolar",
+        path: "/",
       },
       {
-        name: "sjsdg",
-        path: "agjsdg",
+        name: "lorem ipsum dolar",
+        path: "/",
       },
     ],
   },

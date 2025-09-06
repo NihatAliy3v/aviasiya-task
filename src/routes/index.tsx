@@ -12,7 +12,6 @@ export const router = createBrowserRouter([
       { index: true, Component: Dashboard },
       { path: "search-teacher", Component: SearchTeacher },
       { path: "create-teacher", Component: CreateTeacher },
-      //   { path: "about", Component: About },
     ],
   },
 ]);
