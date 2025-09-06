@@ -6,12 +6,11 @@ import Phone from "@/assets/images/phone.svg?react";
 import { Button } from "@/components/ui/button";
 import ArrowIcon from "@/assets/images/arrow-icon.svg?react";
 import { useNavigate } from "react-router";
+import type { Teacher } from "@/types/teacher";
 
-// LocalStorage üçün açar
 const STORAGE_KEY = "personalInfo";
 
 const PersonalInfoForm = () => {
-  // LocalStorage-də saxlanan məlumatı oxu
   const savedData = localStorage.getItem(STORAGE_KEY);
   const defaultValues = savedData ? JSON.parse(savedData) : {};
 
@@ -27,13 +26,12 @@ const PersonalInfoForm = () => {
 
   const navigate = useNavigate();
 
-  // Formdakı bütün dəyişiklikləri izləyib localStorage-də saxla
   const formValues = watch();
   useEffect(() => {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(formValues));
   }, [formValues]);
 
-  const onSubmit = (data: any) => {
+  const onSubmit = (data: Teacher) => {
     console.log("Form Data:", data);
     navigate({
       pathname: "/create-teacher",
@@ -102,7 +100,6 @@ const PersonalInfoForm = () => {
           )}
         </div>
 
-        {/* Required fields */}
         <div>
           <label>
             Doğum tarixi <span className="text-red-800">*</span>

@@ -7,6 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Link } from "react-router";
 import { useTeachers } from "@/hooks/api/teacher";
 import SearchTable from "./SearchTable";
+import type { Teacher } from "@/types/teacher";
 
 
 
@@ -22,7 +23,7 @@ const SearchTeacher = () => {
       return;
     }
 
-    const filtered = teachers?.filter((item) => {
+    const filtered = teachers?.filter((item:Teacher) => {
       const fullName =
         `${item.firstName} ${item.lastName} ${item.fatherName}`.toLowerCase();
       return (

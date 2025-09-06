@@ -1,4 +1,3 @@
-import React from "react";
 import Tick from "@/assets/images/tick.svg?react";
 const StepSuccess = () => {
   return (

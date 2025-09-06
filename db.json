@@ -141,6 +141,42 @@
         "1",
         "2"
       ]
+    },
+    {
+      "id": "6bfe",
+      "firstName": "Nicat",
+      "lastName": "Memmedli",
+      "fatherName": "Blablabla",
+      "gender": "male",
+      "birthdate": "2025-09-24",
+      "seriaNo": "sassssss",
+      "finCode": "abcdfgh",
+      "citizenship": "Azerbaycan",
+      "family": "evli",
+      "social": "Blablabla",
+      "socialStatus": "Blablabla",
+      "userName": "nicat_memmedli",
+      "militaryStatus": "false",
+      "disabilityStatus": "false",
+      "address": "baku",
+      "registerAddress": "Lenkeran",
+      "tel": "05050505050",
+      "internalTel": "212121212121",
+      "email": "nmmmdl1021@gmail.com",
+      "startTime": "2025-09-16",
+      "totalHour": "750",
+      "department": "IKT",
+      "academicDegree": "phd",
+      "academicName": "dosent",
+      "stateUnit": "yarim",
+      "languages": "ru",
+      "languageSkills": "az",
+      "subjects": [
+        "1",
+        "2",
+        "3"
+      ],
+      "status": true
     }
   ],
   "subjects": [

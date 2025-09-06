@@ -10,18 +10,29 @@ import DropdownIcon from "@/assets/images/dropdown-icon.svg?react";
 import BlackDocIcon from "@/assets/images/black-doc-icon.svg?react";
 import EditIcon from "@/assets/images/edit-icon.svg?react";
 import TrashIcon from "@/assets/images/trash-icon.svg?react";
+import type { Teacher } from "@/types/teacher";
 
 
 
-const DashboardTable = ({ filteredTeachers,setSelectedTeacher }) => {
-  const [openPopoverId, setOpenPopoverId] = useState(null);
+interface DashboardTableProps {
+  filteredTeachers: Teacher[] | undefined;
+  setSelectedTeacher: React.Dispatch<
+    React.SetStateAction<Teacher|null>
+  >;
+}
+const DashboardTable: React.FC<DashboardTableProps> = ({
+  filteredTeachers,
+  setSelectedTeacher,
+}) => {
+  const [openPopoverId, setOpenPopoverId] = useState<string | null>(null);
   const { mutate: deleteTeacher } = useDeleteTeacher();
 
-  const handleDelete = (id) => {
+  const handleDelete = (id: string) => {
     if (window.confirm("Bu müəllimi silmək istədiyinizə əminsinizmi?")) {
       deleteTeacher(id);
     }
   };
+
   return (
     <div className="overflow-x-auto invisible-scrollbar w-[1100px]">
       <table className="border min-w-[1440px] text-sm ">
@@ -52,7 +63,7 @@ const DashboardTable = ({ filteredTeachers,setSelectedTeacher }) => {
               <td className="py-3 pl-5">{item.finCode}</td>
               <td className="py-3 pl-5">{item.birthdate}</td>
               <td className="py-3 pl-5">
-                <span className="border border-gray-500  p-1 rounded-lg text-xs">
+                <span className="border border-gray-500 p-1 rounded-lg text-xs">
                   {item.stateUnit}
                 </span>
               </td>
@@ -82,8 +93,8 @@ const DashboardTable = ({ filteredTeachers,setSelectedTeacher }) => {
                   <PopoverContent className="absolute right-0 flex flex-col gap-3">
                     <button
                       onClick={() => {
-                        setSelectedTeacher(item); 
-                        setOpenPopoverId(null); 
+                        setSelectedTeacher(item);
+                        setOpenPopoverId(null);
                       }}
                       className="flex items-center gap-2"
                     >

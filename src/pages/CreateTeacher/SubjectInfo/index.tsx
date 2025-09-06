@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
 import BlackDocIcon from "@/assets/images/black-doc-icon.svg?react";
@@ -9,8 +9,9 @@ import { useNavigate } from "react-router";
 import ArrowIcon from "@/assets/images/arrow-icon.svg?react";
 import XIcon from "@/assets/images/x-icon.svg?react";
 import { useSubjects } from "@/hooks/api/subject";
-import { useAddTeacher, useTeachers } from "@/hooks/api/teacher";
+import { useAddTeacher } from "@/hooks/api/teacher";
 import Swal from "sweetalert2";
+import type { Subject } from "@/types/subject";
 const LOCAL_KEY = "subjectInfo";
 
 const SubjectInfoForm = () => {
@@ -63,7 +64,7 @@ const SubjectInfoForm = () => {
     setSelectedItems((prev) => prev.filter((item) => item !== id));
   };
 
-  const filteredOptions = subjectData?.filter((item) =>
+  const filteredOptions = subjectData?.filter((item: Subject) =>
     item.label.toLowerCase().includes(search.toLowerCase())
   );
 
@@ -96,6 +97,7 @@ const SubjectInfoForm = () => {
     ...personalInfo,
     ...academicInfo,
     subjects: subjectInfo,
+    status: true,
   };
 
   const handlePrev = () => {
@@ -104,7 +106,6 @@ const SubjectInfoForm = () => {
       search: "?step=academic",
     });
   };
-
 
   const handleNext = () => {
     try {
@@ -154,7 +155,7 @@ const SubjectInfoForm = () => {
                   Heç bir nəticə yoxdur
                 </p>
               )}
-              {filteredOptions.map((item) => {
+              {filteredOptions.map((item: Subject) => {
                 const checked = selectedItems.includes(item.id);
                 return (
                   <div
@@ -178,7 +179,7 @@ const SubjectInfoForm = () => {
         {selectedItems.length > 0 && (
           <ol className="mt-4 list-decimal list-inside space-y-1">
             {selectedItems.map((id, index) => {
-              const item = subjectData?.find((opt) => opt.id === id);
+              const item = subjectData?.find((opt: Subject) => opt.id === id);
               if (!item) return null;
               return (
                 <li key={item.id} className="flex justify-between items-center">

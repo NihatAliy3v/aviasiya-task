@@ -1,7 +1,8 @@
-import React from "react";
+import type React from "react";
 import { rows } from "./config";
+import type { Teacher } from "@/types/teacher";
 
-const SearchTable = ({results}) => {
+const SearchTable: React.FC<{ results: Teacher[] }> = ({ results }) => {
   return (
     <div className="overflow-x-auto invisible-scrollbar mt-10 w-[1100px]">
       <table className="border min-w-[1440px] text-sm">

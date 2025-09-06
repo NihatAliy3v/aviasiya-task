@@ -7,13 +7,14 @@ import UserAddIcon from "@/assets/images/user-white-add.svg?react";
 import DashboardTable from "./Table";
 import DetailModal from "./DetailModal";
 import Heading  from "./Heading";
+import type { Teacher } from "@/types/teacher";
 
 const Dashboard = () => {
   const { data: teacherData } = useTeachers();
   const [searchTerm, setSearchTerm] = useState("");
-  const [selectedTeacher, setSelectedTeacher] = useState(null);
+  const [selectedTeacher, setSelectedTeacher] = useState<Teacher | null>(null);
 
-  const filteredTeachers = teacherData?.filter((item) => {
+  const filteredTeachers = teacherData?.filter((item:Teacher) => {
     const fullName =
       `${item.firstName} ${item.lastName} ${item.fatherName}`.toLowerCase();
     return (
@@ -56,6 +57,7 @@ const Dashboard = () => {
                 <span>Müəllim əlavə et</span>
               </Link>
             </div>
+
           </div>
 
           <DashboardTable

@@ -1,7 +1,19 @@
 import UserAvatar from "@/assets/images/user-avatar.svg?react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import type { Teacher } from "@/types/teacher";
+import React from "react";
+import { type Dispatch, type SetStateAction } from "react";
 
-const DetailModal = ({setSelectedTeacher,selectedTeacher}) => {
+
+
+interface DetailModalProps {
+  selectedTeacher: Teacher | null;
+  setSelectedTeacher: Dispatch<SetStateAction<Teacher | null>>;
+}
+
+const DetailModal: React.FC<DetailModalProps> = ({ setSelectedTeacher, selectedTeacher }) => {
+  if (!selectedTeacher) return null; 
+
   return (
     <div className="fixed inset-0 z-50 flex">
       <div
@@ -19,28 +31,30 @@ const DetailModal = ({setSelectedTeacher,selectedTeacher}) => {
             ✕
           </button>
         </div>
+
         <div className="flex items-center gap-2">
           <UserAvatar />
           <div>
             <div className="flex gap-2 items-center">
-              <span>Nigar Rəhimova Tural</span>
-              <span className="text-#B42318 border border-red-500 bg-red-50 p-1 rounded-lg text-sm">
+              <span>{selectedTeacher.firstName} {selectedTeacher.lastName} {selectedTeacher.fatherName}</span>
+              <span className="text-[#B42318] border border-red-500 bg-red-50 p-1 rounded-lg text-sm">
                 Əmr yoxdur
               </span>
             </div>
 
             <div className="flex gap-2">
-              <span className="border border-gray-500  p-1 rounded-lg text-xs">
+              <span className="border border-gray-500 p-1 rounded-lg text-xs">
                 0,5 ştat
               </span>
-              <span className="border border-gray-500  p-1 rounded-lg text-xs">
+              <span className="border border-gray-500 p-1 rounded-lg text-xs">
                 saat hesabı
               </span>
             </div>
           </div>
         </div>
+
         <div>
-          <Tabs defaultValue="account" className="">
+          <Tabs defaultValue="personalTab">
             <TabsList className="my-3">
               <TabsTrigger value="personalTab" autoFocus>
                 Şəxsi məlumat
@@ -49,75 +63,71 @@ const DetailModal = ({setSelectedTeacher,selectedTeacher}) => {
               <TabsTrigger value="subjectTab">Fənlər</TabsTrigger>
               <TabsTrigger value="docTab">Sənədlər</TabsTrigger>
             </TabsList>
+
             <TabsContent value="personalTab">
               <ul className="text-[#414651] flex flex-col gap-2">
                 <li className="flex justify-between">
-                  <span className="font-medium">Ad</span>{" "}
+                  <span className="font-medium">Ad</span>
                   <span>{selectedTeacher.firstName}</span>
                 </li>
                 <li className="flex justify-between">
-                  <span className="font-medium">Soyad</span>{" "}
+                  <span className="font-medium">Soyad</span>
                   <span>{selectedTeacher.lastName}</span>
                 </li>
                 <li className="flex justify-between">
-                  <span className="font-medium">Ata adı</span>{" "}
+                  <span className="font-medium">Ata adı</span>
                   <span>{selectedTeacher.fatherName}</span>
                 </li>
                 <li className="flex justify-between">
-                  <span className="font-medium">Cinsi</span>{" "}
+                  <span className="font-medium">Cinsi</span>
                   <span>{selectedTeacher.gender}</span>
                 </li>
                 <li className="flex justify-between">
-                  <span className="font-medium">Doğum tarixi</span>{" "}
+                  <span className="font-medium">Doğum tarixi</span>
                   <span>{selectedTeacher.birthdate}</span>
                 </li>
                 <li className="flex justify-between">
-                  <span className="font-medium">ŞV seriya</span>{" "}
+                  <span className="font-medium">ŞV seriya</span>
                   <span>{selectedTeacher.seriaNo}</span>
                 </li>
                 <li className="flex justify-between">
-                  <span className="font-medium">Finkod</span>{" "}
+                  <span className="font-medium">Finkod</span>
                   <span>{selectedTeacher.finCode}</span>
                 </li>
                 <li className="flex justify-between">
-                  <span className="font-medium">İstifadəçi adı</span>{" "}
+                  <span className="font-medium">İstifadəçi adı</span>
                   <span>{selectedTeacher.userName}</span>
                 </li>
                 <li className="flex justify-between">
-                  <span className="font-medium">Vətəndaşlıq</span>{" "}
+                  <span className="font-medium">Vətəndaşlıq</span>
                   <span>{selectedTeacher.citizenship}</span>
                 </li>
                 <li className="flex justify-between">
-                  <span className="font-medium">Sosial statusu</span>{" "}
+                  <span className="font-medium">Sosial statusu</span>
                   <span>{selectedTeacher.socialStatus}</span>
                 </li>
                 <li className="flex justify-between">
-                  <span className="font-medium">Sosial vəziyyəti</span>{" "}
+                  <span className="font-medium">Sosial vəziyyəti</span>
                   <span>{selectedTeacher.social}</span>
                 </li>
                 <li className="flex justify-between">
-                  <span className="font-medium">Hərbi status</span>{" "}
-                  <span>
-                    {selectedTeacher.militaryStatus ? "Var" : "Yoxdur"}
-                  </span>
+                  <span className="font-medium">Hərbi status</span>
+                  <span>{selectedTeacher.militaryStatus ? "Var" : "Yoxdur"}</span>
                 </li>
                 <li className="flex justify-between">
-                  <span className="font-medium">Əlillik status</span>{" "}
-                  <span>
-                    {selectedTeacher.disabilityStatus ? "Var" : "Yoxdur"}
-                  </span>
+                  <span className="font-medium">Əlillik status</span>
+                  <span>{selectedTeacher.disabilityStatus ? "Var" : "Yoxdur"}</span>
                 </li>
                 <li className="flex justify-between">
-                  <span className="font-medium">İşə başlama tarixi</span>{" "}
-                  <span>
-                    <span>{selectedTeacher.startTime}</span>
-                  </span>
+                  <span className="font-medium">İşə başlama tarixi</span>
+                  <span>{selectedTeacher.startTime}</span>
                 </li>
               </ul>
             </TabsContent>
+
             <TabsContent value="academicTab">Akademik</TabsContent>
-            <TabsContent value="subjectTab">Fennler</TabsContent>
-            <TabsContent value="docTab">Senedler</TabsContent>
+            <TabsContent value="subjectTab">Fənlər</TabsContent>
+            <TabsContent value="docTab">Sənədlər</TabsContent>
           </Tabs>
         </div>
       </div>
