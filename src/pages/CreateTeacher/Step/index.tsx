@@ -1,4 +1,3 @@
-import React from "react";
 import StepProgress from "./StepProgress";
 import StepPending from "./StepPending";
 import { useSearchParams } from "react-router";
