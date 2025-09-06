@@ -1,10 +1,10 @@
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";
-import PersonalIcon from "@/assets/images/personal-icon.svg?react";
+import PersonalIcon from "@/assets/images/icons/personal-icon.svg?react";
 import { Input } from "@/components/ui/input";
-import Phone from "@/assets/images/phone.svg?react";
+import Phone from "@/assets/images/icons/phone.svg?react";
 import { Button } from "@/components/ui/button";
-import ArrowIcon from "@/assets/images/arrow-icon.svg?react";
+import ArrowIcon from "@/assets/images/icons/arrow-icon.svg?react";
 import { useNavigate } from "react-router";
 import type { Teacher } from "@/types/teacher";
 

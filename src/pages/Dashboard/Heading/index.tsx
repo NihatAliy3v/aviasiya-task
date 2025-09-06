@@ -1,4 +1,4 @@
-import CalendaIcon from "@/assets/images/calendar-icon.svg?react";
+import CalendaIcon from "@/assets/images/icons/calendar-icon.svg?react";
 
 const Heading = () => {
   return (

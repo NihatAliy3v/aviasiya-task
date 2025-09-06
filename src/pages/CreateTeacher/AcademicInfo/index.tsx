@@ -1,8 +1,8 @@
 import { Button } from "@/components/ui/button";
 import { useForm } from "react-hook-form";
-import ArrowIcon from "@/assets/images/arrow-icon.svg?react";
-import GraduateIcon from "@/assets/images/graduate-icon.svg?react";
-import LangIcon from "@/assets/images/lang-icon.svg?react";
+import ArrowIcon from "@/assets/images/icons/arrow-icon.svg?react";
+import GraduateIcon from "@/assets/images/icons/graduate-icon.svg?react";
+import LangIcon from "@/assets/images/icons/lang-icon.svg?react";
 import { useNavigate } from "react-router";
 import { useEffect } from "react";
 

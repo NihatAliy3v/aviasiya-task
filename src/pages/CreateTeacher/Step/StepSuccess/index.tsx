@@ -1,4 +1,4 @@
-import Tick from "@/assets/images/tick.svg?react";
+import Tick from "@/assets/images/icons/tick.svg?react";
 const StepSuccess = () => {
   return (
     <div className="  rounded-full w-[32px] h-[32px] flex items-center justify-center">

@@ -1,4 +1,4 @@
-import avatar from "@/assets/images/avatar.svg";
+import avatar from "@/assets/images/icons/avatar.svg";
 import Step from "./Step";
 import PersonalInfoForm from "./PersonalInfo";
 import AcademicInfoForm from "./AcademicInfo";

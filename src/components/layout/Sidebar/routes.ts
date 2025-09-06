@@ -1,10 +1,10 @@
-import userIcon from "@/assets/images/user-icon.svg";
-import fileIcon from "@/assets/images/file-icon.svg";
-import folderIcon from "@/assets/images/folder-icon.svg";
-import structureIcon from "@/assets/images/structure-icon.svg";
-import manageIcon from "@/assets/images/manage-icon.svg";
-import backpackIcon from "@/assets/images/backpack-icon.svg";
-import announcementIcon from "@/assets/images/announcement-icon.svg";
+import userIcon from "@/assets/images/icons/user-icon.svg";
+import fileIcon from "@/assets/images/icons/file-icon.svg";
+import folderIcon from "@/assets/images/icons/folder-icon.svg";
+import structureIcon from "@/assets/images/icons/structure-icon.svg";
+import manageIcon from "@/assets/images/icons/manage-icon.svg";
+import backpackIcon from "@/assets/images/icons/backpack-icon.svg";
+import announcementIcon from "@/assets/images/icons/announcement-icon.svg";
 
 export const routes = [
   {

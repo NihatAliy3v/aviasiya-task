@@ -15,7 +15,7 @@ import {
 import { ChevronDown } from "lucide-react";
 import { routes } from "./routes";
 import { Link } from "react-router"; // react-router link
-// import userIcon from "@/assets/images/user-icon.svg";
+// import userIcon from "@/assets/images/icons/user-icon.svg";
 const SidebarMain = () => {
   return (
     <Sidebar className="pt-[100px]">

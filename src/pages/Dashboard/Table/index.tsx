@@ -6,10 +6,10 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import { useDeleteTeacher } from "@/hooks/api/teacher";
-import DropdownIcon from "@/assets/images/dropdown-icon.svg?react";
-import BlackDocIcon from "@/assets/images/black-doc-icon.svg?react";
-import EditIcon from "@/assets/images/edit-icon.svg?react";
-import TrashIcon from "@/assets/images/trash-icon.svg?react";
+import DropdownIcon from "@/assets/images/icons/dropdown-icon.svg?react";
+import BlackDocIcon from "@/assets/images/icons/black-doc-icon.svg?react";
+import EditIcon from "@/assets/images/icons/edit-icon.svg?react";
+import TrashIcon from "@/assets/images/icons/trash-icon.svg?react";
 import type { Teacher } from "@/types/teacher";
 
 

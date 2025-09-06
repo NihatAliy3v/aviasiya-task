@@ -1,13 +1,13 @@
 import { useState, useRef, useEffect } from "react";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
-import BlackDocIcon from "@/assets/images/black-doc-icon.svg?react";
+import BlackDocIcon from "@/assets/images/icons/black-doc-icon.svg?react";
 import { Input } from "@/components/ui/input";
-import SearchIcon from "@/assets/images/search-icon.svg?react";
+import SearchIcon from "@/assets/images/icons/search-icon.svg?react";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router";
-import ArrowIcon from "@/assets/images/arrow-icon.svg?react";
-import XIcon from "@/assets/images/x-icon.svg?react";
+import ArrowIcon from "@/assets/images/icons/arrow-icon.svg?react";
+import XIcon from "@/assets/images/icons/x-icon.svg?react";
 import { useSubjects } from "@/hooks/api/subject";
 import { useAddTeacher } from "@/hooks/api/teacher";
 import Swal from "sweetalert2";

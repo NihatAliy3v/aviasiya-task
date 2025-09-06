@@ -1,4 +1,4 @@
-import UserAvatar from "@/assets/images/user-avatar.svg?react";
+import UserAvatar from "@/assets/images/icons/user-avatar.svg?react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import type { Teacher } from "@/types/teacher";
 import React from "react";

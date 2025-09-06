@@ -1,7 +1,7 @@
 import { useState } from "react";
-import UserAdd from "@/assets/images/user-add.svg?react";
-import SearchIcon from "@/assets/images/search-icon.svg?react";
-import InfoIcon from "@/assets/images/info-icon.svg?react";
+import UserAdd from "@/assets/images/icons/user-add.svg?react";
+import SearchIcon from "@/assets/images/icons/search-icon.svg?react";
+import InfoIcon from "@/assets/images/icons/info-icon.svg?react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Link } from "react-router";

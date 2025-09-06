@@ -1,8 +1,8 @@
 import logo from "@/assets/images/logo.png";
-import docIcon from "@/assets/images/doc-icon.svg";
-import menuIcon from "@/assets/images/menu-icon.svg";
-import notificationIcon from "@/assets/images/notification-icon.svg";
-import chevronDown from "@/assets/images/chevron-down.svg";
+import docIcon from "@/assets/images/icons/doc-icon.svg";
+import menuIcon from "@/assets/images/icons/menu-icon.svg";
+import notificationIcon from "@/assets/images/icons/notification-icon.svg";
+import chevronDown from "@/assets/images/icons/chevron-down.svg";
 
 const Header = () => {
   return (
