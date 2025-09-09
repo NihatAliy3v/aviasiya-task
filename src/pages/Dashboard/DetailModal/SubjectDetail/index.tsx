@@ -1,5 +1,5 @@
 import type { Subject } from "@/types/subject";
-import { BookOpen, ChevronDownIcon } from "lucide-react";
+import { BookOpen } from "lucide-react";
 
 interface SubjectDetailProps {
   subjectData: Subject[];

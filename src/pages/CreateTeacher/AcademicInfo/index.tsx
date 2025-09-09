@@ -20,6 +20,7 @@ const STORAGE_KEY = "academicInfo";
 const STORAGE_KEY_UPDATE = "academicInfoUpdate";
 
 const AcademicInfo = forwardRef<{ handleSave: () => void }>((props, ref) => {
+	console.log(props);
 	const savedData = localStorage.getItem(STORAGE_KEY);
 	const defaultValues: Partial<FormValues> = savedData
 		? JSON.parse(savedData)
@@ -60,6 +61,7 @@ const AcademicInfo = forwardRef<{ handleSave: () => void }>((props, ref) => {
 	}, [id, teacherData, reset]);
 
 	const onSubmit = (data: FormValues) => {
+		console.log("Form Data:", data);
 		if (isEditMode) {
 			navigate({
 				pathname: `/update-teacher/${id}`,

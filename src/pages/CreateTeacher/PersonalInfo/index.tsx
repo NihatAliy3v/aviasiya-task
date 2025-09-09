@@ -15,7 +15,9 @@ const STORAGE_KEY_UPDATE = "personalInfoUpdate";
 
 const PersonalInfoForm = forwardRef<{
 	handleSave: () => void;
-}>((props,ref) => {
+}>((props, ref) => {
+	console.log(props);
+
 	const savedData = localStorage.getItem(STORAGE_KEY);
 	const defaultValues = savedData ? JSON.parse(savedData) : {};
 	const { id } = useParams();
@@ -71,7 +73,7 @@ const PersonalInfoForm = forwardRef<{
 	}, [formValues]);
 
 	useImperativeHandle(ref, () => ({
-		handleSave()  {
+		handleSave() {
 			teacher.mutate(formValues);
 		},
 	}));

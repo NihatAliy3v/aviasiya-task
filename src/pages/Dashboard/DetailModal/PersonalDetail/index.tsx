@@ -6,7 +6,7 @@ import {
     CollapsibleTrigger,
 } from "@/components/ui/collapsible";
 
-import {  ChevronDownIcon, GraduationCap, Phone } from "lucide-react";
+import {  ChevronDownIcon, Phone } from "lucide-react";
 
 interface PersonalDetailProps {
     personalData: { label: string; value: string }[];

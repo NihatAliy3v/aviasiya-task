@@ -1,5 +1,4 @@
-import { DockIcon, File } from "lucide-react";
-import React from "react";
+
 import FileLineIcon from "@/assets/images/icons/file-line-icon.svg?react";
 import PDFIcon from "@/assets/images/icons/pdf-icon.svg?react";
 const DocDetail = () => {

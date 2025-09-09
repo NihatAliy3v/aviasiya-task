@@ -24,7 +24,7 @@ const styles: StylesConfig<Option, true> = {
 			cursor: isDisabled ? "not-allowed" : "default",
 		};
 	},
-	multiValue: (styles, { data }) => {
+	multiValue: (styles) => {
 		const color = "white";
 		return {
 			...styles,
@@ -33,11 +33,11 @@ const styles: StylesConfig<Option, true> = {
 			borderRadius: 5,
 		};
 	},
-	multiValueLabel: (styles, { data }) => ({
+	multiValueLabel: (styles) => ({
 		...styles,
 		color: "black",
 	}),
-	multiValueRemove: (styles, { data }) => ({
+	multiValueRemove: (styles) => ({
 		...styles,
 		color: "black",
 		":hover": {
