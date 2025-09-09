@@ -6,6 +6,7 @@ import ManagementTable from "./Table";
 import Heading from "./Heading";
 import type { Teacher } from "@/types/teacher";
 import api from "@/services/api/axiosInstance";
+import { queryClient } from "@/services/api/queryClient";
 
 const TeacherManagement = () => {
 	const { data: teacherData } = useTeachers();
@@ -32,12 +33,18 @@ const TeacherManagement = () => {
 		}
 	}, [selectedTeachers]);
 
-	const handleButtonClick = () => {
+	const handleButtonClick = async() => {
 		const selectedArray = Object.values(selectedTeachers);
-		selectedArray.forEach((teacher) => {
-			console.log(teacher);
-      api.put(`/teachers/${teacher.id}`, { ...teacher, status: true });
-		});
+		for (const teacher of selectedArray) {
+			await api.put(`/teachers/${teacher.id}`, {
+				...teacher,
+				status: true,
+			});
+		}
+
+		queryClient.invalidateQueries({ queryKey: ["teachers"] });
+
+		setSelectedTeachers({});
 	};
 	const toggleSelect = (teacher: Teacher) => {
 		setSelectedTeachers((prev) => {

@@ -14,7 +14,7 @@ export type Teacher = {
   userName: string;
   militaryStatus: "var" | "yoxdur";
   disabilityStatus: "var" | "yoxdur" ;
-  status?: "var" | "yoxdur" ;
+  status?: "var" | "yoxdur" | boolean;
   address: string;
   registerAddress: string;
   tel: string;
