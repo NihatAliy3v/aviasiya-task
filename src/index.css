@@ -3,12 +3,12 @@
 @tailwind utilities;
 
 .invisible-scrollbar {
-  scrollbar-width: thin;        /* Firefox üçün */
+  scrollbar-width: thin;        
   scrollbar-color: transparent transparent;
 }
 
 .invisible-scrollbar::-webkit-scrollbar {
-  height: 8px; /* yatay scroll üçün */
+  height: 8px; 
 }
 
 .invisible-scrollbar::-webkit-scrollbar-track {

@@ -77,7 +77,6 @@ const DashboardTable: React.FC<DashboardTableProps> = ({
 							</td>
 							<td className="py-3 pl-5">{item.totalHour}</td>
 							<td className="py-3 pl-5">
-								{/* {item.totalHour} */}
 
 								<div className="flex flex-wrap gap-1">
 									{item &&
