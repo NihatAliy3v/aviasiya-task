@@ -23,7 +23,7 @@ const AcademicInfo = forwardRef<{ handleSave: () => void }>((props, ref) => {
 	const savedData = localStorage.getItem(STORAGE_KEY);
 	const defaultValues: Partial<FormValues> = savedData
 		? JSON.parse(savedData)
-		: { totalHour: 750, colors: [] };
+		: { totalHour: 750 };
 	const { id } = useParams();
 	const isEditMode = Boolean(id);
 	const { data: teacherData } = useGetTeacherById(id as string);
@@ -207,7 +207,7 @@ const AcademicInfo = forwardRef<{ handleSave: () => void }>((props, ref) => {
 					</label>
 					<MultiSelect
 						control={control}
-						name={"languagesSkills"}
+						name={"languageSkills"}
 						options={languageSkillsOptions}
 					/>
 				</div>

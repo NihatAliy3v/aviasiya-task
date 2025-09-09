@@ -110,7 +110,7 @@ const SubjectInfoForm = forwardRef<{ handleSave: () => void }>((_, ref) => {
 		...personalInfo,
 		...academicInfo,
 		subjects: selectedItems,
-		status: true,
+		status: false,
 	};
 
 	const handlePrev = () => {

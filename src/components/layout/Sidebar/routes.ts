@@ -88,7 +88,7 @@ export const routes = [
       },
       {
         name: "Tədris yükü",
-        path: "/",
+        path: "/management-teacher",
       },
       {
         name: "Professor - müəllim heyəti",
