@@ -12,9 +12,9 @@ export type Teacher = {
   social: string;
   socialStatus: string;
   userName: string;
-  militaryStatus: "true" | "false" | boolean;
-  disabilityStatus: "true" | "false" | boolean;
-  status?: "true" | "false" | boolean;
+  militaryStatus: "var" | "yoxdur";
+  disabilityStatus: "var" | "yoxdur" ;
+  status?: "var" | "yoxdur" ;
   address: string;
   registerAddress: string;
   tel: string;
@@ -25,8 +25,8 @@ export type Teacher = {
   department: string;
   academicDegree: string;
   academicName: string;
-  stateUnit: string;
-  languages: string;
-  languageSkills: string;
+  stateUnit: { value: string; label: string }[];
+  languages:  { value: string; label: string }[];
+  languageSkills:  { value: string; label: string }[];
   subjects: string[];
 };

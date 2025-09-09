@@ -12,6 +12,17 @@ export const useTeachers = () => {
   });
 };
 
+export const useGetTeacherById = (teacherId: string) => {
+  return useQuery({
+    queryKey: ["teacher", teacherId],
+    queryFn: async () => {
+      const res = await api.get(`/teachers/${teacherId}`);
+      return res.data as Teacher;
+    },
+    enabled: !!teacherId, 
+  });
+};
+
 export const useAddTeacher = () => {
   const queryClient = useQueryClient();
   return useMutation({

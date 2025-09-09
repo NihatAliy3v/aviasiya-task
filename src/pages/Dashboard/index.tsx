@@ -59,7 +59,6 @@ const Dashboard = () => {
             </div>
 
           </div>
-
           <DashboardTable
             filteredTeachers={filteredTeachers}
             setSelectedTeacher={setSelectedTeacher}
